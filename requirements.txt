@@ -11,7 +11,6 @@ langchain-text-splitters==0.3.2
 matplotlib
 matplotlib
 transformers
-collections
 wordcloud
 konlpy.tag
 # llama_cpp_python==0.3.1
