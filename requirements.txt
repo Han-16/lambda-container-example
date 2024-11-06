@@ -12,6 +12,6 @@ matplotlib
 matplotlib
 transformers
 wordcloud
-konlpy.tag
+konlpy
 # llama_cpp_python==0.3.1
  
