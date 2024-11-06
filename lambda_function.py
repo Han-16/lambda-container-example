@@ -1,14 +1,11 @@
-def lambda_handler(event, context):
-    name = event.get('queryStringParameters', {}).get('name')
-    
-    if name:
-        name_length = len(name)
-        return {
-            'statusCode': 200,
-            'body': f'Name length is {name_length}'
-        }
-    else:
-        return {
-            'statusCode': 400,
-            'body': 'Error: No name provided'
-        }
+import json
+
+def handler(event, context):
+    body = event["body-json"]
+    client = body["client"]
+    result = f"Hello, {client}"
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps(result)
+    }
