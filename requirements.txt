@@ -2,14 +2,14 @@ pydub
 librosa
 soundfile
 numpy
-scipy.signal
+scipy
 tqdm
 langchain==0.3.7
 langchain-experimental==0.3.3
 langchain-huggingface==0.1.2
 langchain-text-splitters==0.3.2
-matplotlib.pyplot
-matplotlib.font_manager
+matplotlib
+matplotlib
 transformers
 collections
 wordcloud
