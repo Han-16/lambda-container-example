@@ -14,5 +14,5 @@ def store_current_time():
         file.write(current_time)
 
 def read_current_time():
-    with open('./tmp/current_time.txt', 'r') as file:
+    with open('/tmp/current_time.txt', 'r') as file:
         return file.read()
