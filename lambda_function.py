@@ -3,6 +3,7 @@ import os
 import json
 import io
 import zipfile
+import temp.greeting as greeting
 
 ACCESS_KEY = os.environ.get("ACCESS_KEY")
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -23,6 +24,7 @@ def download_file_from_s3(object_name):
     
 
 def handler(event, context):
+    greeting.print_greeting()
     object_name = event["mp3FileUrl"]
     download_file_from_s3(object_name)
     print("Downloaded file from S3")
