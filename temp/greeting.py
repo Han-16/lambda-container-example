@@ -12,3 +12,7 @@ def store_current_time():
     
     with open(os.path.join(output_dir, 'current_time.txt'), 'w') as file:
         file.write(current_time)
+
+def read_current_time():
+    with open('./tmp/current_time.txt', 'r') as file:
+        return file.read()
