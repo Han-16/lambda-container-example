@@ -14,5 +14,6 @@ def store_current_time():
     with open(os.path.join(output_dir, 'current_time.txt'), 'w') as file:
         file.write(current_time)
 
-if __name__ == "__main__":
-    print_greeting()
+def read_current_time():
+    with open('./output/current_time.txt', 'r') as file:
+        return file.read()

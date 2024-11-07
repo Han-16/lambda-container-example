@@ -25,6 +25,7 @@ def download_file_from_s3(object_name):
 
 def handler(event, context):
     greeting.print_greeting()
+    print("Current time is", greeting.read_current_time())
     object_name = event["mp3FileUrl"]
     download_file_from_s3(object_name)
     print("Downloaded file from S3")
