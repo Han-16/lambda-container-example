@@ -9,6 +9,6 @@ RUN /var/lang/bin/python3.10 -m pip install llama-cpp-python
 RUN /var/lang/bin/python3.10 -m pip install torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
 RUN git clone https://github.com/Han-16/lambda-container-example
 RUN /var/lang/bin/python3.10 -m pip install -r lambda-container-example/requirements.txt
-COPY greeting /var/task/greeting
+COPY temp/ /var/task/temp/
 COPY lambda_function.py /var/task/
 CMD ["lambda_function.handler"]
