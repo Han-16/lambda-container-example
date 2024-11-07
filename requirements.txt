@@ -13,5 +13,4 @@ matplotlib
 transformers
 wordcloud
 konlpy
-# llama_cpp_python==0.3.1
  
