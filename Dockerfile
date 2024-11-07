@@ -1,7 +1,9 @@
 FROM amazon/aws-lambda-python:3.10
 RUN /var/lang/bin/python3.10 -m pip install --upgrade pip
-COPY .env ./
-RUN export $(cat .env |xargs)
+ARG ACCESS_KEY
+ARG SECRET_KEY
+ENV ACCESS_KEY=${ACCESS_KEY}
+ENV SECRET_KEY=${SECRET_KEY}
 RUN yum install git gcc-c++ cmake make -y
 RUN /var/lang/bin/python3.10 -m pip install llama-cpp-python
 RUN /var/lang/bin/python3.10 -m pip install torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
