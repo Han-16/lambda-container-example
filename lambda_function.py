@@ -2,6 +2,7 @@ import boto3
 import os
 import json
 import io
+import csv
 import numpy as np
 import pandas as pd
 
@@ -18,8 +19,19 @@ s3_client = boto3.client(
 def download_file_from_s3(file_name, key):
     s3_client.download_file(BUCKET, key, file_name)
 
+def unzip_file(file_name):
+    os.system(f"unzip /tmp/{file_name} -d /tmp/example.csv")
+
+
 def handler(event, context):
     file_name = event["mp3FileUrl"]
     key = event["mp3FileUrl"]
     download_file_from_s3(file_name, key)
     print(os.listdir("/tmp"))
+    unzip_file(file_name)
+    data = pd.read_csv(f"tmp/example.csv")
+    
+    return {
+        "statusCode": 200,
+        "body": json.dumps(data.head())
+    }

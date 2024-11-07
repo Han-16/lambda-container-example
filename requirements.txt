@@ -13,4 +13,5 @@ matplotlib
 transformers
 wordcloud
 konlpy
+pandas
  
