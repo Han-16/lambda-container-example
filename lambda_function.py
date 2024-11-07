@@ -8,7 +8,7 @@ import pandas as pd
 
 ACCESS_KEY = os.environ.get("ACCESS_KEY")
 SECRET_KEY = os.environ.get("SECRET_KEY")
-BUCKET = "clerker-ai.bucket"
+BUCKET_NAME = "clerker-ai.bucket"
 
 s3_client = boto3.client(
     's3',
@@ -16,22 +16,16 @@ s3_client = boto3.client(
     aws_secret_access_key=SECRET_KEY
     )
 
-def download_file_from_s3(file_name, key):
-    s3_client.download_file(BUCKET, key, file_name)
-
-def unzip_file(file_name):
-    os.system(f"unzip /tmp/{file_name} -d /tmp/example.csv")
-
+def download_file_from_s3(object_name):
+    try:
+        s3_client.download_file(BUCKET_NAME, object_name, '/tmp/example.csv')
+    except Exception as e:
+        print(e)
+        raise e
+    
 
 def handler(event, context):
-    file_name = event["mp3FileUrl"]
-    key = event["mp3FileUrl"]
-    download_file_from_s3(file_name, key)
+    object_name = event["mp3FileUrl"]
+    download_file_from_s3(object_name)
     print(os.listdir("/tmp"))
-    unzip_file(file_name)
-    data = pd.read_csv(f"tmp/example.csv")
     
-    return {
-        "statusCode": 200,
-        "body": json.dumps(data.head())
-    }
