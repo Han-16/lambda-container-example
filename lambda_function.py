@@ -16,7 +16,7 @@ s3_client = boto3.client(
 
 def download_file_from_s3(object_name):
     try:
-        s3_client.download_file(BUCKET_NAME, object_name, '/tmp/example.csv')
+        s3_client.download_file(BUCKET_NAME, object_name, '/tmp/example.zip')
     except Exception as e:
         print(e)
         raise e
@@ -25,5 +25,9 @@ def download_file_from_s3(object_name):
 def handler(event, context):
     object_name = event["mp3FileUrl"]
     download_file_from_s3(object_name)
+    print("Downloaded file from S3")
     print(os.listdir("/tmp"))
-    
+    print("unzip the file")
+    os.system("unzip /tmp/example.zip -d /tmp")
+    print("Unzipped the file")
+    print(os.listdir("/tmp"))    
