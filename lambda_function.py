@@ -3,8 +3,6 @@ import os
 import json
 import io
 import csv
-import numpy as np
-import pandas as pd
 
 ACCESS_KEY = os.environ.get("ACCESS_KEY")
 SECRET_KEY = os.environ.get("SECRET_KEY")
