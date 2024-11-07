@@ -2,7 +2,7 @@ import boto3
 import os
 import json
 import io
-import csv
+import zipfile
 
 ACCESS_KEY = os.environ.get("ACCESS_KEY")
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -28,6 +28,7 @@ def handler(event, context):
     print("Downloaded file from S3")
     print(os.listdir("/tmp"))
     print("unzip the file")
-    os.system("unzip /tmp/example.zip -d /tmp")
+    with zipfile.ZipFile('/tmp/example.zip', 'r') as zip_ref:
+        zip_ref.extractall('/tmp')
     print("Unzipped the file")
     print(os.listdir("/tmp"))    
